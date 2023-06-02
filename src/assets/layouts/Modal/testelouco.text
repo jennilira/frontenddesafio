@@ -1,0 +1,55 @@
+
+  // const formik = useFormik<FormValues>({
+  //   initialValues: {
+  //     name: '',
+  //     identifier: '',
+  //     phone_number: '',
+  //     birthdate: '',
+  //     image: null,        
+  //   },
+  //   validationSchema: Yup.object().shape({
+  //     name: Yup.string().required('Name is required'),
+  //     identifier: Yup.string()
+  //       .required('Identifier is required')
+  //       .test('cpf', 'Invalid CPF', (value) => {
+  //         // Perform CPF validation here
+  //         return cpfValidator(value);
+  //       })
+  //       .test('unique', 'Identifier must be unique', async (value) => {
+  //         // Perform uniqueness check here
+  //         return isIdentifierUnique(value);
+  //       }),
+  //     phone_number: Yup.string().required('Phone number is required'),
+  //     birthdate: Yup.date().required('Birthdate is required'),
+  //     image: Yup.mixed().required('Image is required').test('fileType', 'Invalid file type', (value) => {
+  //       // Perform file type validation here
+  //       return isValidImageType(value);
+  //     }),
+  //   }),
+  //   onSubmit: (values : FormValues) => {
+  //     // Handle form submission here
+  //     // console.log(values);s
+  //   },
+  // });
+
+  // // Custom validation functions
+  // const cpfValidator = (value: string) => {
+  //   // Implement CPF validation logic here
+  //   // Return true if valid, false otherwise
+  //   return true;
+  // };
+
+  // const isIdentifierUnique = async (value: string) => {
+  //   // Perform uniqueness check here
+  //   // Return true if unique, false otherwise
+  //   return true;
+  // };
+
+  // const isValidImageType = (value: File | null | undefined ) => {
+  //   if (value instanceof File) {
+  //   // Implemente a lógica de validação do tipo de arquivo aqui
+  //   // Retorne true se for válido, false caso contrário
+  //   return true;
+  // }
+  // return false;
+  // };

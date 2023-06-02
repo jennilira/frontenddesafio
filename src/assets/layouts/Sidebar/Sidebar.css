@@ -1,0 +1,185 @@
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    
+
+}
+
+.sidebar{
+    background-color: var(--lightcolor);
+
+ 
+    width: var(--sidebarwidth);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    position: fixed;
+    
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.side-box{
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+.line{
+   background-color: var(--backgroudcolor);
+
+ height: 1px;
+}
+.sidebar-container{
+   
+     
+   
+}
+
+.item-item{
+  
+    align-items: center;
+    display: inline;
+    text-decoration: none;
+   
+    
+
+
+    align-items: center;
+    display: flex;
+    /* text-decoration: none; */
+    padding: 4px;
+    /* text-align: center; */
+}
+
+
+.link   a{
+    text-decoration: none;
+   
+}
+
+.side-item{
+ 
+ 
+    
+
+
+  
+  
+   /* padding: auto; */
+}
+.side-item:hover{
+ 
+    
+    color: var(--maincolor);
+   /* padding: auto; */
+}
+
+.item    a{
+     color: var(--gray);
+     margin: 0 15px;
+
+     display: inline;
+     text-decoration: none;
+}
+.item   >svg {
+    font-size: 25px;
+}
+
+.item {
+   
+    color: var(--gray);
+    
+    display: flex;
+  
+   cursor: pointer;
+}
+
+.icon-item{
+    display: inline;
+}
+.item:hover{
+    color: var(--maincolor);
+   
+}
+
+.item a:hover{
+    /* background-color:var(--maincolordark); */
+    color: var(--maincolor);
+ 
+}
+.logo{
+    color: var(--maincolor);
+    
+    font-size: 2rem;
+
+  display:flex;
+  align-items: center;
+    text-align: center;
+    padding: 15px;
+  
+}
+
+.top-section{
+    margin-top: 20px;
+   
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.footer-sidebar{
+    padding: 20px;
+    align-items: end;
+   /* margin-top: auto; */
+
+   position: absolute;
+    bottom: 0;
+  
+}
+
+.box{
+  
+   text-align: center;
+    align-items: center;
+  align-items: center;
+    color: var(--lightcolor);
+ 
+}
+
+
+.box-item{
+    /* background-color: var(--lightcolor); */
+    background-color:var(--maincolor);
+   
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+/*    
+ align-items: center;
+display: flex;  */
+}
+.icon{
+    font-size: 5rem;
+}
+
+.text{
+ /* text-align: center; */
+ 
+ left: 0;
+ top: 0;
+   
+}
+
+/* 
+a{
+    color: var(--lightcolor);
+} */
+
+
+.active{
+    background-color: blueviolet;
+}

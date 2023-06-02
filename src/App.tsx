@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
+
+// import Sidebar from './assets/layouts/Sidebar/Sidebar';
+// import Example from './assets/layouts/Modal/modal';
+import Mainlayout from './assets/layouts/Mainlayout/MainLayout';
+import ListPatients from './components/TablesList/listPatients/ListPatients';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+   <Mainlayout/>
+
+{/* 
+   <Routes>
+        <Route
+          path="/home"
+          element={
+           <ListPatients/>
+          }
+        />
+        </Routes>
+        
+
+        <Routes>
+        <Route
+          path="/home"
+          element={
+           <Home/>
+           ...e nesse home fica tudo que é de home entende,,,pense..
+          }
+        />
+        </Routes>
+        
+        
+        */}
     </div>
   );
 }
