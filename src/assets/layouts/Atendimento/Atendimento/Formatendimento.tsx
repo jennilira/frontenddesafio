@@ -1,10 +1,12 @@
 import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import Switch from "react-switchery";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
-import "./InfoAtendimento";
+import "../ListaAtendimento/InfoAtendimento";
 // import symptoms from "./symtoms/Symptoms";
 import Symptoms from "./symtoms/symptoms";
 import { useParams } from "react-router";
@@ -120,7 +122,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
   ]);
 
   //logica aa
-  console.log(symptoms.length);
+  // console.log(symptoms.length);
 
   const [clickedbtn, setClickedbtn] = useState(false);
   const [clickedbtn2, setClickedbtn2] = useState(true);
@@ -133,8 +135,10 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
   };
 
   useEffect(() => {
-    console.log(sintomasSelecionados)
-  }, [sintomasSelecionados])
+    console.log(sintomasSelecionados);
+    console.log(formData);
+    console.log(symptoms);
+  }, [sintomasSelecionados]);
 
   const [formData, setFormData] = useState({
     patient_id: id,
@@ -144,6 +148,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     respiratory_rate: "",
     pulse: "",
     symptoms: sintomasSelecionados,
+    // symptoms: sintomasSelecionados,
   });
 
   const handleSubmit = async (e: FormEvent) => {
@@ -169,14 +174,21 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
         pulse: "",
         symptoms: sintomasSelecionados,
       });
+      toast.success("Paciente Atendido com sucesso!");
     } catch (error) {
       console.error("Erro ao inserir dados:", error);
       console.log(formData);
-     
+      toast.error("Ocorreu um erro!");
     }
   };
- //aqui
-   
+  //aqui
+
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      symptoms: sintomasSelecionados,
+    }));
+  }, [sintomasSelecionados]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -311,6 +323,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
           Finalizar
         </button>
       </div>
+      <ToastContainer />
     </Form>
   );
 };

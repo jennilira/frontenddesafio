@@ -1,5 +1,5 @@
 import React from 'react';
-
+//aqui eu pego os erros do backend 
 interface Props {
   errors: { [field: string]: string[] };
 }

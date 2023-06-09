@@ -4,7 +4,7 @@ import Example from "../Modal/modal";
 import "./MainLayout.css";
 import ListPatients from "../../../components/TablesList/listPatients/ListPatients";
 import Header from "../Header/Header";
-import Atendimento from "../Atendimento/Atendimento/InfoAtendimento";
+import Atendimento from "../Atendimento/ListaAtendimento/InfoAtendimento";
 import FormExample from "../Atendimento/Atendimento/Formatendimento";
 import { Route, Routes } from "react-router-dom";
 import FormAtendimento from "../Atendimento/Atendimento/Formatendimento";

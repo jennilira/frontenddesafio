@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DataList from "../assets/layouts/Atendimento/Atendimento/InfoAtendimento";
+import DataList from "../assets/layouts/Atendimento/ListaAtendimento/InfoAtendimento";
 import FormAtendimento from "../assets/layouts/Atendimento/Atendimento/Formatendimento";
 import { useParams } from "react-router-dom";
 import axios from "axios";

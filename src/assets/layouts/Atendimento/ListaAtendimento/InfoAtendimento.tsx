@@ -1,4 +1,4 @@
-import "./Atedimento.css";
+import "../Atendimento/Atedimento.css";
 import "./InfoAtendimento.css";
 import React, { FC, useEffect, useState } from "react";
 
