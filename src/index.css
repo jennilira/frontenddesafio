@@ -1,40 +1,34 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--backgroudcolor);
-  
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
-*{
+* {
   text-decoration: none;
   list-style: none;
-  font-family: 'Poppins', sans-serif;
-  
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease;
 }
 
-
-
-:root{
-
-  --maincolor: #408BFC;
+:root {
+  --maincolor: #408bfc;
   --maincolordark: #276bd1;
---lightcolor: #FFFFFF;
-  --subcolor: ;  
-  --backgroudcolor: #EDF0F6  ;      
-  --graylight :  #F6F9FA;
-  --graylight2 :  #F0F4F7;
-  --gray :  #909192;
+  --lightcolor: #ffffff;
+  --subcolor: ;
+  --backgroudcolor: #edf4ff;
+  --graylight: #f6f9fa;
+  --graylight2: #f0f4f7;
+  --gray: #909192;
 
-  --sidebarwidth: 230px ;
+  --sidebarwidth: 230px;
 
-
-  .btn-white{
+  .btn-white {
     background-color: var(--lightcolor);
     border-radius: 20px;
     padding: 10px;
@@ -44,29 +38,40 @@ code {
     margin: 10px;
     color: var(--maincolor);
   }
-  .btn-white a{
-   color: var(--maincolor);
-   text-decoration: none;
-   text-align: center;
+  .btn-white a {
+    color: var(--maincolor);
+    text-decoration: none;
+    text-align: center;
   }
-  .btn-blue{
+  .btn-blue {
     background-color: var(--maincolor);
     border-radius: 20px;
     padding: 10px;
     width: 140px;
     cursor: pointer;
-    
+    font-weight: 500;
+    text-transform: uppercase;
     text-align: center;
     justify-content: center;
-   align-items: center;
+    align-items: center;
     color: var(--lightcolor);
     margin: 14px;
     margin-left: 20px;
     white-space: nowrap;
     border: none;
   }
-  .btn-blue a{
-   color: var(--lightcolor);
-   text-decoration: none;
+  .btn-blue:hover {
+    background-color: #276bd1;
   }
-} 
+  .btn-blue a {
+    color: var(--lightcolor);
+    text-decoration: none;
+  }
+
+  
+.text-0 {
+  font-size: 1.1rem;
+  /* color: var(--gray) */
+}
+
+}

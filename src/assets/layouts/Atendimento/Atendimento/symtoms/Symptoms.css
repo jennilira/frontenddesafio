@@ -1,0 +1,49 @@
+.sintoma-item {
+  margin-bottom: 10px;
+}
+
+.sintoma-selecionado {
+  background-color: #6bb45f;
+  color: #fff;
+}
+
+.sintoma-item label {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.sintoma-item input[type='checkbox'] {
+  display: none;
+}
+
+.sintoma-item input[type='checkbox'] + label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.sintoma-item input[type='checkbox']:checked + label::before {
+  background-color: #6bb45f;
+  border-color: #6bb45f;
+}
+
+.sintoma-item input[type='checkbox'] + label::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 6px;
+  height: 4px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+

@@ -1,5 +1,5 @@
 // import React from 'react'
-// import { useState } from 'react';
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Sidebar.css";
@@ -17,17 +17,18 @@ const Sidebar = () => {
     path: string;
   };
 
+  const [activepath, setactivepath] = useState("/");
   // const [selected, setSelected] = useState(0);
   const menuItems: Item[] = [
     {
       text: "Home",
       icon: BsHouseAdd,
-      path: "/home",
+      path: "/",
     },
     {
-      text: "Atendimento",
+      text: "Atendimentos",
       icon: MdOutlineMedicalServices,
-      path: "/atendimento",
+      path: "/Listaatendimento",
     },
   ];
 
@@ -46,15 +47,24 @@ const Sidebar = () => {
         <div className="line"></div>
 
         <div className="side-box">
-        <div className="side-item">
-          {menuItems.map((item) => (
-            <div key={item.path} className="item " >
-            
-          
-             <Link to={item.path}  className="link"> <div className="item-item"><item.icon className="icon-side" size={20}  />    <Link to={item.path}  >{item.text} </Link></div>  <div className="item-item"> </div> </Link>
-            </div>
-          ))}
-        </div>
+          <div className="side-item">
+            {menuItems.map((item) => (
+              <div
+                key={item.path}
+                className={item.path === activepath ? "item active" : "item"}
+                onClick={() => setactivepath(item.path)}
+              >
+                {/* ? - se */}
+                <Link to={item.path} className="link">
+                  {" "}
+                  <div className="item-item">
+                    <item.icon className="icon-side" size={20} />{" "}
+                    <Link to={item.path}>{item.text} </Link>
+                  </div>{" "}
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="footer-sidebar">
@@ -63,12 +73,17 @@ const Sidebar = () => {
               <div className="icon">
                 <AiOutlineMedicineBox />
               </div>
-              <div className="text">
-                Acesse ao suporte pra saber  mais  .{" "}
-              </div>
+              <div className="text">Acesse ao suporte pra saber mais . </div>
               <div className="btn-white">
                 {" "}
-                <Link to=""> Acessar </Link>
+                <Link
+                  to="https://sintegrada.com.br/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  Acessar{" "}
+                </Link>
                 {/* https://sintegrada.com.br/ */}
               </div>
             </div>

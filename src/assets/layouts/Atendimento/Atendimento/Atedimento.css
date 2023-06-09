@@ -5,6 +5,7 @@
   padding-left: 15px;
   display: flex;
   flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 
 .img-atendimento {
