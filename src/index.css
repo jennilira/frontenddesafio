@@ -21,12 +21,14 @@ code {
   --maincolordark: #276bd1;
   --lightcolor: #ffffff;
   --subcolor: ;
-  --backgroudcolor: #edf4ff;
+  --backgroudcolor: #f1f5fb;
   --graylight: #f6f9fa;
   --graylight2: #f0f4f7;
   --gray: #909192;
+  --blackb: #1b1b1b;
+  --cordetexto: #757575;
 
-  --sidebarwidth: 230px;
+  --sidebarwidth: 250px;
 
   .btn-white {
     background-color: var(--lightcolor);
@@ -47,7 +49,7 @@ code {
     background-color: var(--maincolor);
     border-radius: 20px;
     padding: 10px;
-    width: 140px;
+    width: 144px;
     cursor: pointer;
     font-weight: 500;
     text-transform: uppercase;
@@ -71,9 +73,17 @@ code {
   
 .text-0 {
   font-size: 1.1rem;
+  margin: 4px;
+  
   /* color: var(--gray) */
 }
-
+.error-message{
+  color: rgb(230, 87, 87);
+  }
+  .info-text{
+    color: var(--blackb);
+   
+  }
 
 
 }

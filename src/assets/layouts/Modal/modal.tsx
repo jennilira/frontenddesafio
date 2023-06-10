@@ -83,7 +83,7 @@ const Example: React.FC = () => {
         if (axios.isAxiosError(error)) {
           const axiosError = error;
           toast.error('Ocorreu um erro!');
-
+        
           if (axiosError.response && axiosError.response.status === 422) {
             setErrors(axiosError.response.data.errors);
           } else if (axiosError.response?.status === 413) {
@@ -121,17 +121,18 @@ const Example: React.FC = () => {
     <>
       <Modal show={show} onHide={handleClose} className="centered">
         <Modal.Header closeButton>
-          <Modal.Title>Cadastrar paciente</Modal.Title>
+          <Modal.Title >Cadastrar paciente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Foto do paciente</Form.Label>
+              <div className="letra-modal">Foto do paciente</div>
               <Form.Control
                 type="file"
                 name="image"
                 onChange={handleChange}
                 autoFocus
+                className="letra-modal"
               />
               {formik.errors.image && formik.touched.image && (
                 <div className="error-message">{formik.errors.image}</div>
@@ -148,7 +149,7 @@ const Example: React.FC = () => {
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Nome Completo</Form.Label>
+                <div className="letra-modal">Nome Completo</div>
                 <Form.Control
                   type="text"
                   name="name"
@@ -164,7 +165,7 @@ const Example: React.FC = () => {
               </Form.Group>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>CPF</Form.Label>
+              <div className="letra-modal">CPF</div>
               <InputMask
                 mask="999.999.999-99"
                 maskChar=""
@@ -186,7 +187,7 @@ const Example: React.FC = () => {
             </Form.Group>
             <div className="row row-space">
               <div className="col-6 mb-3">
-                <Form.Label>Data de Nascimento</Form.Label>
+                <div className="letra-modal">Data de Nascimento</div>
                 <div>
                   <Form.Control
                     type="date"
@@ -202,7 +203,7 @@ const Example: React.FC = () => {
                 </div>
               </div>
               <div className="col-6 mb-3">
-                <Form.Label>Telefone</Form.Label>
+                <div className="letra-modal">Telefone</div>
                 <div>
                   <InputMask
                     mask="(99) 99999-9999"
@@ -236,7 +237,7 @@ const Example: React.FC = () => {
       <ToastContainer />
 
       <div
-        className="d-flex justify-content-end btn-blue  modal-btn"
+        className=" justify-content-end btn-blue  modal-btn"
         onClick={handleShow}
       >
         Novo paciente

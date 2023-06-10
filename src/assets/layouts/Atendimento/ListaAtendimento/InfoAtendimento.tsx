@@ -37,30 +37,35 @@ const DataList: FC<PacienteProps> = ({ paciente }): JSX.Element => {
             <div className="col-sm-8 custom-column  aa">
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0">
-                    {" "}
-                    Nome : {paciente.name}{" "}
+                  <div className="div-item text-0 row">
+                  
+                  Nome : 
+                
+                    <div className="info-text col ">  {paciente.name} </div>
+                   
                   </div>
                 </div>
               </div>
 
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0">
-                    Cpf: {paciente.identifier}
+                  <div className="div-item text-0 row">
+                    Cpf:
+                      <div className="info-text col "> {paciente.identifier}</div>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0">
-                    Data de nascimento:{paciente.birthdate}
+                  <div className="div-item text-0 row">
+                    Data de nascimento:
+                    <div className="info-text col ">{paciente.birthdate}</div>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0">Condição</div>
+                  <div className="div-item text-0 row">Condição</div>
                 </div>
               </div>
             </div>

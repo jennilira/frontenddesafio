@@ -1,8 +1,7 @@
 
 .tudo{
     background-color:var(--backgroudcolor);
-    /* position: relative; */
-    
+   
 }
 
 .main{
@@ -15,10 +14,10 @@
     /* background-color:var(--backgroudcolor); */
     /* height:100vh;
     width:100vh; */
-    /* height:100vh;
-    width:100vh; */
+   
      /* position: relative; */
-     /* max-width:100vh; */
+   
+  
 }
 
 .main-content{

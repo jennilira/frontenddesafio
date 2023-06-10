@@ -4,6 +4,7 @@ color: rgb(230, 87, 87);
 
 .modal-btn{
     float: right;
+  
 }
    
 .fade centered modal show{
@@ -16,4 +17,10 @@ color: rgb(230, 87, 87);
 
 .modal{
     display:flex;
+}
+
+.letra-modal{
+font-weight: 600;
+font-size: 18px;
+color: var(--cordetexto);
 }

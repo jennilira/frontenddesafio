@@ -10,6 +10,9 @@ interface Symptom {
   created_at: null | Date;
   updated_at: null | Date;
 }
+interface FormErrors {
+  [key: string]: string[];
+}
 
 interface SymptomProps {
   symptoms: Symptom[];
@@ -40,6 +43,8 @@ const Symptoms: React.FC<SymptomProps> = ({
     }
   };
 
+  const [errors, setErrors] = useState<FormErrors>({});
+
   return (
     <div>
       {symptoms.map((symptom, i) => (
@@ -61,12 +66,20 @@ const Symptoms: React.FC<SymptomProps> = ({
           <Form.Check
             type="checkbox"
             id="custom-switch"
-            className=""
+            className="checkbox"
             label={symptom.name}
             // type="checkbox"
             value={symptom.id}
             onChange={handleSelecionarSintoma}
           />
+           {errors.symptoms && errors.symptoms.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.symptoms[0]   && "o campo simtomas é obrigatorio "}
+
+                        </p>
+                      </div>
+                    )}
           {/* <label htmlFor="my-checkbox"></label> */}
         </div>
       ))}

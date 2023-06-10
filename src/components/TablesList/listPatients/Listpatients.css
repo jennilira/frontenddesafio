@@ -22,7 +22,8 @@ align-items: center; */
   font-weight: 700;
   color: rgb(49, 49, 49);
   margin: 0;
-  padding: 10px 2px 3px 3px;
+  
+  padding-top: 10px;
 }
 
 .table-table {
@@ -34,18 +35,28 @@ th {
 
 .texto2 {
   color: var(--gray);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .product-image > img {
-  height: 50px;
-  width: 50px;
+  height: 67px;
+  width: 67px;
   border-radius: 50px;
+  object-fit: cover;
 }
 
 /* fazer o delete */
 
 .btn-pagination {
-  padding: 5px;
+  padding: 15px;
   margin: 5px;
+  border: none;
+  background: none;
+  background-color: none;
+
+}
+.btn-pagination > svg{
+ 
+
+
 }

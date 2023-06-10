@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Listpatients.css";
 import { differenceInYears } from "date-fns";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import PatientTable from './PatientTable';
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { FiArrowRight } from "react-icons/fi";
-import { BsTrash } from "react-icons/bs";
+import { BiTrashAlt } from "react-icons/bi";
 import ListPatients from "./ListPatients";
 import "./pageslink";
 import Pagination from "./pageslink";
@@ -103,16 +105,18 @@ const PaginationExample: React.FC = () => {
       </div>
     );
   };
-  // const deleteData = async (id:number ) => {
-  //   try {
-  //     const response = await axios.delete(
-  //       `http://covid-checker.sintegrada.com.br/api/patients/${id}`
-  //     );
-  //     console.log("Dado excluído com sucesso:", response.data);
-  //   } catch (error) {
-  //     console.error("Erro ao excluir dado:", error);
-  //   }
-  // };
+  const deleteData = async (id:number ) => {
+    try {
+      const response = await axios.delete(
+        `http://covid-checker.sintegrada.com.br/api/patients/${id}`
+      );
+      console.log("Dado excluído com sucesso:", response.data);
+      toast.success('Paciente excluído com  sucesso!');
+    } catch (error) {
+      console.error("Erro ao excluir dado:", error);
+      toast.error('Ocorreu um erro !');
+    }
+  };
 
   return (
     <div>
@@ -135,7 +139,7 @@ const PaginationExample: React.FC = () => {
 
                 <th>condiçâo </th>
                 <th>atendimento</th>
-                {/* <th>deletar</th> */}
+                <th>deletar</th>
               </tr>
             </thead>
             <tbody>
@@ -171,19 +175,20 @@ const PaginationExample: React.FC = () => {
                         </Link>
                       </div>
                     </td>
-                    {/* <td>
+                    <td>
                       <div className="btn">
-                        <BsTrash
+                        <BiTrashAlt
                           size={25}
                           onClick={() => deleteData(item?.id)}
                         />
                       </div>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
             </tbody>
           </Table>
         </Table>
+        <ToastContainer />
       </div>
       <div className="d-flex justify-content-center pr-4">
         {/* <button
@@ -204,7 +209,8 @@ const PaginationExample: React.FC = () => {
             onClick={handleNextPage}
             disabled={currentPage === lastPage}
           >
-            <RxCaretRight  size={34}/>
+            <RxCaretRight  size={34}/
+            >
           </button> */}
       </div>
     </div>

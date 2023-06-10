@@ -33,4 +33,6 @@ function Mainlayout() {
   );
 }
 
+
+//aqui vou passa a condiçao para todas as paginas aaa
 export default Mainlayout;

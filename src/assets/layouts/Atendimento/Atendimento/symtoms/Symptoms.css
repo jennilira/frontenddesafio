@@ -47,3 +47,9 @@
   opacity: 0;
 }
 
+.checkbox{
+  font-size: 20px;
+}
+.checkbox > p {
+
+}

@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
+
 import "../ListaAtendimento/InfoAtendimento";
 // import symptoms from "./symtoms/Symptoms";
 import Symptoms from "./symtoms/symptoms";
@@ -27,6 +28,9 @@ interface Atendimento {
   symptoms: Symptom[];
 }
 
+interface FormErrors {
+  [key: string]: string[];
+}
 interface FormExampleProps {}
 
 const FormAtendimento: React.FC<FormExampleProps> = () => {
@@ -127,6 +131,9 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
   const [clickedbtn, setClickedbtn] = useState(false);
   const [clickedbtn2, setClickedbtn2] = useState(true);
 
+  // erros
+  const [errors, setErrors] = useState<FormErrors>({});
+
   const handleClick = () => {
     setClickedbtn(!clickedbtn);
   };
@@ -136,9 +143,15 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
 
   useEffect(() => {
     console.log(sintomasSelecionados);
+    console.log(errors);
+ 
     console.log(formData);
     console.log(symptoms);
   }, [sintomasSelecionados]);
+
+  // useEffect(() =>{
+
+  // }, [])
 
   const [formData, setFormData] = useState({
     patient_id: id,
@@ -178,7 +191,25 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     } catch (error) {
       console.error("Erro ao inserir dados:", error);
       console.log(formData);
+      
       toast.error("Ocorreu um erro!");
+      if (axios.isAxiosError(error)) {
+        const axiosError = error;
+      
+       
+
+        if (axiosError.response && axiosError.response.status ) {
+          setErrors(axiosError.response.data.errors);
+          setErrors(axiosError.response.data.errors);
+          console.log(axiosError.response.data.errors);
+          //aqui em cima 
+        } else if (axiosError.response?.status === 413) {
+          setErrors(axiosError.response.data.errors);
+        } else {
+          console.log(axiosError);
+         
+        }
+      }
     }
   };
   //aqui
@@ -235,6 +266,15 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.temperature}
                       onChange={handleChange}
                     />
+
+                    {errors.temperature && errors.temperature.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.temperature[0] }
+                        </p>
+                      </div>
+                    )}
+                      
                   </Form.Group>
                 </Col>
               </Row>
@@ -251,8 +291,18 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       placeholder="coloque aqui sua pressão sistolica"
                       value={formData.systolic_pressure}
                       onChange={handleChange}
+                      
                     />
+                    {errors.systolic_pressure && errors.systolic_pressure.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.systolic_pressure[0] 
+}
+                        </p>
+                      </div>
+                    )}
                   </Form.Group>
+                 
                 </Col>
                 <Col className="mb-2">
                   <Form.Group controlId="formDiastolicPressure">
@@ -264,6 +314,14 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.diastolic_pressure}
                       onChange={handleChange}
                     />
+                       {errors.diastolic_pressure && errors.diastolic_pressure.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.diastolic_pressure[0] 
+                           && "algum problema "}
+                        </p>
+                      </div>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>
@@ -278,6 +336,14 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.respiratory_rate}
                       onChange={handleChange}
                     />
+                     {errors.respiratory_rate && errors.respiratory_rate.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.respiratory_rate[0] 
+                            }
+                        </p>
+                      </div>
+                    )}
                   </Form.Group>
                 </Col>
                 <Col className="mb-2">
@@ -290,6 +356,14 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.pulse}
                       onChange={handleChange}
                     />
+                     {errors.pulse && errors.pulse.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.pulse[0] 
+                            }
+                        </p>
+                      </div>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>
@@ -313,6 +387,14 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                   sintomasSelecionados={sintomasSelecionados}
                   setSintomasSelecionados={setSintomasSelecionados}
                 />
+                 {errors.symptoms && errors.symptoms.length > 0 && (
+                      <div className="error-message">
+                        <p>
+                          {errors.symptoms[0]   && "o campo simtomas é obrigatorio "}
+
+                        </p>
+                      </div>
+                    )}
               </div>
             </Form>
           </div>
