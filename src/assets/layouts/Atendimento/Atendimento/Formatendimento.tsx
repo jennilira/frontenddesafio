@@ -2,8 +2,9 @@ import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import Switch from "react-switchery";
 import { toast, ToastContainer } from "react-toastify";
+// import { ChangeEvent } from 'react';
 import "react-toastify/dist/ReactToastify.css";
-
+import "./FormAtendimento.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -144,7 +145,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
   useEffect(() => {
     console.log(sintomasSelecionados);
     console.log(errors);
- 
+
     console.log(formData);
     console.log(symptoms);
   }, [sintomasSelecionados]);
@@ -191,28 +192,30 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     } catch (error) {
       console.error("Erro ao inserir dados:", error);
       console.log(formData);
-      
+
       toast.error("Ocorreu um erro!");
       if (axios.isAxiosError(error)) {
         const axiosError = error;
-      
-       
 
-        if (axiosError.response && axiosError.response.status ) {
+        if (axiosError.response && axiosError.response.status) {
           setErrors(axiosError.response.data.errors);
           setErrors(axiosError.response.data.errors);
           console.log(axiosError.response.data.errors);
-          //aqui em cima 
+          //aqui em cima
         } else if (axiosError.response?.status === 413) {
           setErrors(axiosError.response.data.errors);
         } else {
           console.log(axiosError);
-         
         }
       }
     }
   };
   //aqui
+
+  const [respostaVisual, setRespostaVisual] = useState(""); //resposta da pressao
+  const [RespostaTemperatura, setdefinirRespostaTemperatura] = useState("");
+  const [RespostaPulso, setRespostaPulso] = useState("");
+  const [Respostarespiracao, setRespostarespiracao] = useState("");
 
   useEffect(() => {
     setFormData((prevFormData) => ({
@@ -224,10 +227,142 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    const { diastolic_pressure, systolic_pressure, temperature, pulse } =
+      formData;
+
+    //  if (name === 'diastolic_pressure') {
+
+    //   definirRespostaVisual(parseFloat(value), parseFloat(formData.systolic_pressure));
+    // } else if (name === 'systolic_pressure') {
+    //   definirRespostaVisual(parseFloat(formData.diastolic_pressure), parseFloat(value));
+    // }
+    if (name === "temperature") {
+      // definirRespostaVisual(parseFloat(value), parseFloat(formData.diastolic_pressure));
+      definirRespostaTemperatura(parseFloat(value));
+    } else if (name === "systolic_pressure") {
+      definirRespostaVisual(
+        parseFloat(value),
+        parseFloat(formData.systolic_pressure)
+      );
+    } else if (name === "diastolic_pressure") {
+      definirRespostaVisual(
+        parseFloat(formData.diastolic_pressure),
+        parseFloat(value)
+      );
+    } else if (name === "pulse") {
+      definirRespostaPulso(parseFloat(value));
+    } else if (name === "respiratory_rate") {
+      definirRespostaFrequenciaRespiratoria(parseFloat(value));
+    }
+  };
+
+  const definirRespostaVisual = (
+    diastolic_pressure: number,
+    systolic_pressure: number
+  ) => {
+    let resposta: string = "";
+    let respostaEspecifica: string = "";
+    if (diastolic_pressure < 90 && systolic_pressure < 60) {
+      resposta = "hipertenso";
+    } else if (
+      systolic_pressure >= 90 &&
+      systolic_pressure <= 130 &&
+      diastolic_pressure >= 60 &&
+      diastolic_pressure <= 85
+    ) {
+      resposta = "normotenso";
+    } else if (
+      systolic_pressure >= 130 &&
+      systolic_pressure <= 139 &&
+      diastolic_pressure >= 85 &&
+      diastolic_pressure <= 89
+    ) {
+      resposta = "normotenso-limitrofe";
+    } else if (
+      systolic_pressure >= 140 &&
+      systolic_pressure <= 150 &&
+      diastolic_pressure >= 90 &&
+      diastolic_pressure <= 99
+    ) {
+      resposta = "hipertenso-leve";
+    } else if (
+      systolic_pressure >= 160 &&
+      systolic_pressure <= 179 &&
+      diastolic_pressure >= 100 &&
+      diastolic_pressure <= 109
+    ) {
+      resposta = "hipertenso-moderado";
+    } else if (systolic_pressure >= 180 && diastolic_pressure >= 110) {
+      resposta = "hipertenso-grave";
+    } else {
+      resposta = "nao é condizente"; //
+    }
+    console.log("Valor de diastolic_pressure:", diastolic_pressure);
+    console.log("Valor de systolic_pressure:", systolic_pressure);
+    setRespostaVisual(resposta);
+
+    console.log(resposta);
+    console.log(resposta);
+    console.log(respostaEspecifica);
+  };
+
+  const definirRespostaTemperatura = (temperature: number) => {
+    let respostaTemperatura: string = "";
+
+    if (temperature < 35) {
+      respostaTemperatura = "hipotermia";
+    } else if (temperature >= 36.1 && temperature <= 37.2) {
+      respostaTemperatura = "afebril/normotermia";
+    } else if (temperature >= 37.3 && temperature <= 37.7) {
+      respostaTemperatura = "estado febril ou febrícula";
+    } else if (temperature >= 37.8 && temperature <= 38.9) {
+      respostaTemperatura = "febre";
+    } else if (temperature >= 39 && temperature <= 40) {
+      respostaTemperatura = "hiperpirexia";
+    } else {
+      respostaTemperatura = "nao é condizente";
+    }
+
+    setdefinirRespostaTemperatura(respostaTemperatura);
+    // setRespostaVisual(respostaTemperatura);
+  };
+
+  const definirRespostaPulso = (pulse: number) => {
+    let respostaPulso: string = "";
+
+    if (pulse < 60) {
+      respostaPulso = "bradicárdio";
+    } else if (pulse >= 60 && pulse <= 100) {
+      respostaPulso = "normocárdico";
+    } else if (pulse > 100) {
+      respostaPulso = "taquicárdico";
+    }
+
+    setRespostaPulso(respostaPulso);
+  };
+
+  const definirRespostaFrequenciaRespiratoria = (respiratory_rate: number) => {
+    let respostaFrequenciaRespiratoria: string = "";
+
+    if (respiratory_rate < 14) {
+      respostaFrequenciaRespiratoria = "bradipnéico";
+    } else if (respiratory_rate >= 14 && respiratory_rate <= 20) {
+      respostaFrequenciaRespiratoria = "eupnéico";
+    } else if (respiratory_rate > 20) {
+      respostaFrequenciaRespiratoria = "taquipnéico";
+    }
+    else  {
+      respostaFrequenciaRespiratoria = "nao é condizente";
+    }
+
+    setRespostarespiracao(respostaFrequenciaRespiratoria);
   };
 
   return (
@@ -266,15 +401,16 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.temperature}
                       onChange={handleChange}
                     />
+                    <div className={`temperature  ${RespostaTemperatura}`}>
+                      {RespostaTemperatura &&
+                        `Classificação: ${RespostaTemperatura}`}
+                    </div>
 
                     {errors.temperature && errors.temperature.length > 0 && (
                       <div className="error-message">
-                        <p>
-                          {errors.temperature[0] }
-                        </p>
+                        <p>{errors.temperature[0]}</p>
                       </div>
                     )}
-                      
                   </Form.Group>
                 </Col>
               </Row>
@@ -291,18 +427,19 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       placeholder="coloque aqui sua pressão sistolica"
                       value={formData.systolic_pressure}
                       onChange={handleChange}
-                      
                     />
-                    {errors.systolic_pressure && errors.systolic_pressure.length > 0 && (
-                      <div className="error-message">
-                        <p>
-                          {errors.systolic_pressure[0] 
-}
-                        </p>
-                      </div>
-                    )}
+
+                    <div className={`resposta-visual ${respostaVisual}`}>
+                      {respostaVisual && `Classificação: ${respostaVisual}`}
+                    </div>
+
+                    {errors.systolic_pressure &&
+                      errors.systolic_pressure.length > 0 && (
+                        <div className="error-message">
+                          <p>{errors.systolic_pressure[0]}</p>
+                        </div>
+                      )}
                   </Form.Group>
-                 
                 </Col>
                 <Col className="mb-2">
                   <Form.Group controlId="formDiastolicPressure">
@@ -314,14 +451,17 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.diastolic_pressure}
                       onChange={handleChange}
                     />
-                       {errors.diastolic_pressure && errors.diastolic_pressure.length > 0 && (
-                      <div className="error-message">
-                        <p>
-                          {errors.diastolic_pressure[0] 
-                           && "algum problema "}
-                        </p>
-                      </div>
-                    )}
+                    <div className={`resposta-visual ${respostaVisual}`}>
+                      {respostaVisual && `Classificação: ${respostaVisual}`}
+                    </div>
+                    {errors.diastolic_pressure &&
+                      errors.diastolic_pressure.length > 0 && (
+                        <div className="error-message">
+                          <p>
+                            {errors.diastolic_pressure[0] && "algum problema "}
+                          </p>
+                        </div>
+                      )}
                   </Form.Group>
                 </Col>
               </Row>
@@ -336,14 +476,16 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.respiratory_rate}
                       onChange={handleChange}
                     />
-                     {errors.respiratory_rate && errors.respiratory_rate.length > 0 && (
-                      <div className="error-message">
-                        <p>
-                          {errors.respiratory_rate[0] 
-                            }
-                        </p>
-                      </div>
-                    )}
+                    <div className={`temperature  ${Respostarespiracao}`}>
+                      {Respostarespiracao &&
+                        `Classificação: ${Respostarespiracao}`}
+                    </div>
+                    {errors.respiratory_rate &&
+                      errors.respiratory_rate.length > 0 && (
+                        <div className="error-message">
+                          <p>{errors.respiratory_rate[0]}</p>
+                        </div>
+                      )}
                   </Form.Group>
                 </Col>
                 <Col className="mb-2">
@@ -356,12 +498,12 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       value={formData.pulse}
                       onChange={handleChange}
                     />
-                     {errors.pulse && errors.pulse.length > 0 && (
+                    <div className={`temperature  ${RespostaPulso}`}>
+                      {RespostaPulso && `Classificação: ${RespostaPulso}`}
+                    </div>
+                    {errors.pulse && errors.pulse.length > 0 && (
                       <div className="error-message">
-                        <p>
-                          {errors.pulse[0] 
-                            }
-                        </p>
+                        <p>{errors.pulse[0]}</p>
                       </div>
                     )}
                   </Form.Group>
@@ -387,14 +529,13 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                   sintomasSelecionados={sintomasSelecionados}
                   setSintomasSelecionados={setSintomasSelecionados}
                 />
-                 {errors.symptoms && errors.symptoms.length > 0 && (
-                      <div className="error-message">
-                        <p>
-                          {errors.symptoms[0]   && "o campo simtomas é obrigatorio "}
-
-                        </p>
-                      </div>
-                    )}
+                {errors.symptoms && errors.symptoms.length > 0 && (
+                  <div className="error-message">
+                    <p>
+                      {errors.symptoms[0] && "o campo simtomas é obrigatorio "}
+                    </p>
+                  </div>
+                )}
               </div>
             </Form>
           </div>

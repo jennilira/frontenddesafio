@@ -1,0 +1,57 @@
+.resposta-visual {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .hipertenso {
+    color: red;
+  }
+  
+  .normotenso {
+    color: green;
+  }
+  
+  .normotenso-limitrofe {
+    color: orange;
+  }
+  
+  .hipertenso-leve {
+    color: yellow;
+  }
+  
+  .hipertenso-moderado {
+    color: pink;
+  }
+  
+  .hipertenso-grave {
+    color: purple;
+  }
+  
+
+
+
+
+  .temperature {
+    font-weight: bold;
+  }
+
+  .hipotermia {
+    color: blue;
+  }
+
+  .afebril-normotermia {
+    color: green;
+  }
+
+  .estado-febril-febricula {
+    color: orange;
+  }
+
+  .febre {
+    color: red;
+  }
+
+  .hiperpirexia {
+    color: purple;
+  }
+  
