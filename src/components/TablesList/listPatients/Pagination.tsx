@@ -8,9 +8,10 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { FiArrowRight } from "react-icons/fi";
-
+import { BsTrash } from "react-icons/bs";
 import ListPatients from "./ListPatients";
-import { Pagination } from "react-bootstrap";
+import "./pageslink";
+import Pagination from "./pageslink";
 
 interface Patient {
   name: string;
@@ -27,10 +28,24 @@ interface AgeCalculatorProps {
   birthdate: string; // Alterado para tipo string
 }
 
+interface PaginationLink {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+  link: number;
+}
+
+interface PaginationProps {
+  // links: PaginationLink[];
+  links: PaginationLink[];
+  onPageChange: (page: number) => void;
+}
+
 const PaginationExample: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [lastPage, setLastPage] = useState<number>(1);
-  const [links, setLinks] = useState<number>(1);
+  // const [links, setLinks] = useState<number>(1);
+  const [links, setLinks] = useState<PaginationLink[]>([]); // Alterado o tipo para PaginationLink[]
   const [data, setData] = useState<Patient[]>([]);
 
   useEffect(() => {
@@ -49,6 +64,13 @@ const PaginationExample: React.FC = () => {
       setLastPage(meta.last_page);
       setLinks(meta.links);
       console.log(meta.links);
+      setLinks(
+        meta.links.map((link: any) => ({
+          label: link.label,
+          active: link.active,
+          // onClick: () => handlePageChange(link.label)
+        }))
+      );
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -66,6 +88,10 @@ const PaginationExample: React.FC = () => {
     }
   };
 
+ 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   const AgeCalculator: React.FC<AgeCalculatorProps> = ({ birthdate }) => {
     const age = differenceInYears(new Date(), new Date(birthdate)); // Conversão para Date
 
@@ -77,28 +103,15 @@ const PaginationExample: React.FC = () => {
       </div>
     );
   };
-
-  //BEM AQUI SERIA A PAGINAÇAO...
-  // interface PaginationLink {
-  //   label: string;
-  //   active: boolean;
-  //   onClick: () => void;
-  // }
-
-  // interface PaginationProps {
-  //   links: PaginationLink[];
-  // }
-
-  // const Pagination: React.FC<PaginationProps> = ({ links }) => {
-  //   return (
-  //     <ul className="pagination">
-  //       {links.map((link, index) => (
-  //         <li key={index} className={`page-item ${link.active ? 'active' : ''}`}>
-  //           <button className="page-link" onClick={link.onClick}>{link.label}</button>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
+  // const deleteData = async (id:number ) => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `http://covid-checker.sintegrada.com.br/api/patients/${id}`
+  //     );
+  //     console.log("Dado excluído com sucesso:", response.data);
+  //   } catch (error) {
+  //     console.error("Erro ao excluir dado:", error);
+  //   }
   // };
 
   return (
@@ -107,7 +120,7 @@ const PaginationExample: React.FC = () => {
         <Table className="table-container">
           <div className="header-table">
             <p className="texto1"> Relatorio de pacientes</p>
-            <p className="texto2"> aqui esta informaçoes dos pacientes </p>
+            <p className="texto2"> informaçoes pessoais dos pacientes </p>
           </div>
 
           <Table className="table-table">
@@ -122,6 +135,7 @@ const PaginationExample: React.FC = () => {
 
                 <th>condiçâo </th>
                 <th>atendimento</th>
+                {/* <th>deletar</th> */}
               </tr>
             </thead>
             <tbody>
@@ -150,37 +164,48 @@ const PaginationExample: React.FC = () => {
                     <td width="5%">
                       <div className="btn">
                         <Link
-                          to={`/atendimento/${item.id}`}
+                          to={`/atendimento/${item.id} `}
                           className="btn card-btn "
-                      
                         >
                           <FiArrowRight />
                         </Link>
                       </div>
                     </td>
+                    {/* <td>
+                      <div className="btn">
+                        <BsTrash
+                          size={25}
+                          onClick={() => deleteData(item?.id)}
+                        />
+                      </div>
+                    </td> */}
                   </tr>
                 ))}
             </tbody>
           </Table>
         </Table>
-
-        <div className="d-flex justify-content-center pr-4">
-          <button
-            className="btn-pagination"
+      </div>
+      <div className="d-flex justify-content-center pr-4">
+        {/* <button
+            className="btn-pagination pagination"
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
-            <RxCaretLeft />
-          </button>
+            <RxCaretLeft size={34} />
+          </button> */}
+        <Pagination
+          links={links}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
 
-          <button
-            className="btn-pagination"
+        {/* <button 
+            className="btn-pagination pagination"
             onClick={handleNextPage}
             disabled={currentPage === lastPage}
           >
-            <RxCaretRight />
-          </button>
-        </div>
+            <RxCaretRight  size={34}/>
+          </button> */}
       </div>
     </div>
   );
