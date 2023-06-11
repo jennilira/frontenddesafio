@@ -29,7 +29,7 @@ const Sidebar = () => {
       path: "/",
     },
     {
-      text: "analytics",
+      text: "Analytics",
       icon: VscGraph,
       path: "/Graficos",
     },
@@ -43,7 +43,7 @@ const Sidebar = () => {
         <div className="top-section">
           <div className="logo">
             {" "}
-            <MdLocalHospital /> <div className="logo-tex">COVIDDetect</div>{" "}
+            <MdLocalHospital /> <div className="logo-tex">CoronavirusChecker</div>{" "}
           </div>
         </div>
         <div className="line"></div>
