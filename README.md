@@ -24,4 +24,4 @@ Para executar o Coronavirus Checker em sua máquina local, siga as etapas abaixo
 ## Conclusão
 O desenvolvimento do Coronavirus Checker tem sido uma experiência valiosa para mim, permitindo-me ampliar meu conhecimento técnico e aprimorar minhas habilidades. Estou genuinamente interessada em aprender mais sobre o assunto e estou empolgada em continuar aperfeiçoando . Se você tiver alguma dúvida ou sugestão, por favor, não hesite em entrar em contato. Obrigada!
 
-Feito por : bem possive futura estagiaria da Multintegrada.
+Feito por : possivel futura estagiaria da Multintegrada.
