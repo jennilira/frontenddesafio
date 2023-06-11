@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Listpatients.css";
 import { differenceInYears } from "date-fns";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import PatientTable from './PatientTable';
 import Table from "react-bootstrap/Table";
@@ -14,6 +14,8 @@ import { BiTrashAlt } from "react-icons/bi";
 import ListPatients from "./ListPatients";
 import "./pageslink";
 import Pagination from "./pageslink";
+import Condition from "../../condition";
+import Itempaginator from "./itempaginator";
 
 interface Patient {
   name: string;
@@ -25,10 +27,23 @@ interface Patient {
 
   // Defina a estrutura dos dados do paciente conforme necessário
 }
-
-interface AgeCalculatorProps {
-  birthdate: string; // Alterado para tipo string
+interface Atendimento {
+  patient_id: string;
+  temperature: string;
+  systolic_pressure: string;
+  diastolic_pressure: string;
+  respiratory_rate: string;
+  pulse: string;
+  symptoms: Symptom[];
 }
+interface Symptom {
+  id: number;
+  name: string;
+  created_at: null | Date;
+  updated_at: null | Date;
+}
+
+
 
 interface PaginationLink {
   label: string;
@@ -90,33 +105,10 @@ const PaginationExample: React.FC = () => {
     }
   };
 
- 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-  const AgeCalculator: React.FC<AgeCalculatorProps> = ({ birthdate }) => {
-    const age = differenceInYears(new Date(), new Date(birthdate)); // Conversão para Date
 
-    return (
-      <div>
-        {/* <p>Data de nascimento: {new Date(birthdate).toLocaleDateString()}</p>{" "} */}
-        {/* Conversão para Date */}
-        <p>Idade: {age}</p>
-      </div>
-    );
-  };
-  const deleteData = async (id:number ) => {
-    try {
-      const response = await axios.delete(
-        `http://covid-checker.sintegrada.com.br/api/patients/${id}`
-      );
-      console.log("Dado excluído com sucesso:", response.data);
-      toast.success('Paciente excluído com  sucesso!');
-    } catch (error) {
-      console.error("Erro ao excluir dado:", error);
-      toast.error('Ocorreu um erro !');
-    }
-  };
 
   return (
     <div>
@@ -145,45 +137,7 @@ const PaginationExample: React.FC = () => {
             <tbody>
               {data?.length > 0 &&
                 data?.map((item, i) => (
-                  <tr key={item.id}>
-                    <td>{item?.id}</td>
-
-                    <td>
-                      <div className="product-image">
-                        <img
-                          src={`http://covid-checker.sintegrada.com.br/storage/${item?.image}`}
-                          alt="{item?.image}"
-                        />
-                      </div>
-                    </td>
-                    <td>{item?.name}</td>
-                    <td>{item?.identifier}</td>
-                    <td>{item?.phone_number}</td>
-
-                    <td>
-                      <AgeCalculator birthdate={item.birthdate} />
-                    </td>
-
-                    <td width="5%"></td>
-                    <td width="5%">
-                      <div className="btn">
-                        <Link
-                          to={`/atendimento/${item.id} `}
-                          className="btn card-btn "
-                        >
-                          <FiArrowRight />
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="btn">
-                        <BiTrashAlt
-                          size={25}
-                          onClick={() => deleteData(item?.id)}
-                        />
-                      </div>
-                    </td>
-                  </tr>
+                  <Itempaginator item={item} />
                 ))}
             </tbody>
           </Table>

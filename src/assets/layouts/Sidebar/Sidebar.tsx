@@ -7,8 +7,9 @@ import "./Sidebar.css";
 import { IconType } from "react-icons";
 import { BsHouseAdd } from "react-icons/bs";
 import { AiOutlineMedicineBox } from "react-icons/ai";
-import { FaLaptopMedical } from "react-icons/fa";
-import { MdOutlineMedicalServices } from "react-icons/md";
+import { MdLocalHospital } from "react-icons/md";
+
+import { VscGraph } from "react-icons/vsc";
 
 const Sidebar = () => {
   type Item = {
@@ -20,28 +21,29 @@ const Sidebar = () => {
   const [activepath, setactivepath] = useState("/");
   // const [selected, setSelected] = useState(0);
   const menuItems: Item[] = [
+
+    
     {
       text: "Home",
       icon: BsHouseAdd,
       path: "/",
     },
     {
-      text: "Atendimentos",
-      icon: MdOutlineMedicalServices,
-      path: "/Listaatendimento",
+      text: "analytics",
+      icon: VscGraph,
+      path: "/Graficos",
     },
+    
   ];
 
   return (
     <>
-      {/* className={`sidebar ${isClicked ? 'blue' : 'white'}`}
-      onClick={handleClick} */}
-
+      
       <div className="sidebar">
         <div className="top-section">
           <div className="logo">
             {" "}
-            <FaLaptopMedical /> <div>System</div>{" "}
+            <MdLocalHospital /> <div className="logo-tex">COVIDDetect</div>{" "}
           </div>
         </div>
         <div className="line"></div>

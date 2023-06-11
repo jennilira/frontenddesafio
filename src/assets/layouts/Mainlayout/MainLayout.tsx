@@ -11,8 +11,39 @@ import FormAtendimento from "../Atendimento/Atendimento/Formatendimento";
 import AtendimentoPage from "../../../pages/Atendimento";
 import Home from "../../../pages/Home";
 import Footer from "../Footer/Footer";
+import { useState } from "react";
+interface ConditionProps {
+  atendimento:  any;// Defina o tipo correto para atendimento
+  atendimentos: String[] ;// Defina o tipo correto para atendimentos
+}
+interface CondiçãoAtendimentoData {
+  
+  patient_id: number;
+  
+  atendimento: string;
 
-function Mainlayout() {
+  id: string;
+paciente: Patient;
+sintomasSelecionados: Symptom[];
+}
+interface Symptom {
+  id: number;
+  name: string;
+  created_at: null | Date;
+  updated_at: null | Date;
+}
+
+interface Patient {
+  name: string;
+  identifier: string;
+  phone_number: string;
+  birthdate: string;
+  image: File | null | undefined;
+  id: number;
+
+  // Defina a estrutura dos dados do paciente conforme necessário
+}
+const Mainlayout: React.FC = () => {
   return (
     <div className="tudo">
       <Sidebar />

@@ -403,7 +403,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                     />
                     <div className={`temperature  ${RespostaTemperatura}`}>
                       {RespostaTemperatura &&
-                        `Classificação: ${RespostaTemperatura}`}
+                        ` ${RespostaTemperatura}`}
                     </div>
 
                     {errors.temperature && errors.temperature.length > 0 && (
@@ -430,7 +430,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                     />
 
                     <div className={`resposta-visual ${respostaVisual}`}>
-                      {respostaVisual && `Classificação: ${respostaVisual}`}
+                      {respostaVisual && ` ${respostaVisual}`}
                     </div>
 
                     {errors.systolic_pressure &&
@@ -452,7 +452,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       onChange={handleChange}
                     />
                     <div className={`resposta-visual ${respostaVisual}`}>
-                      {respostaVisual && `Classificação: ${respostaVisual}`}
+                      {respostaVisual && ` ${respostaVisual}`}
                     </div>
                     {errors.diastolic_pressure &&
                       errors.diastolic_pressure.length > 0 && (
@@ -478,7 +478,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                     />
                     <div className={`temperature  ${Respostarespiracao}`}>
                       {Respostarespiracao &&
-                        `Classificação: ${Respostarespiracao}`}
+                        ` ${Respostarespiracao}`}
                     </div>
                     {errors.respiratory_rate &&
                       errors.respiratory_rate.length > 0 && (
@@ -499,7 +499,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       onChange={handleChange}
                     />
                     <div className={`temperature  ${RespostaPulso}`}>
-                      {RespostaPulso && `Classificação: ${RespostaPulso}`}
+                      {RespostaPulso && ` ${RespostaPulso}`}
                     </div>
                     {errors.pulse && errors.pulse.length > 0 && (
                       <div className="error-message">

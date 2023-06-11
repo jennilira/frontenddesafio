@@ -1,3 +1,4 @@
+import Condition from "../../../../components/condition";
 import "../Atendimento/Atedimento.css";
 import "./InfoAtendimento.css";
 import React, { FC, useEffect, useState } from "react";
@@ -14,18 +15,30 @@ interface Paciente {
 
 interface PacienteProps {
   paciente: null | Paciente;
+  atendimento: any;
 }
 
-const DataList: FC<PacienteProps> = ({ paciente }): JSX.Element => {
+interface CondiçaoAtendimentoProps {
+  id?: string;
+}
+
+interface CondiçãoAtendimentoData {
+  patient_id: number;
+}
+
+const DataList: FC<PacienteProps> = ({
+  paciente,
+  atendimento,
+}): JSX.Element => {
   return (
     <div>
       {paciente && (
-        <div className=" custom-container container-atendimento mt-3">
+        <div className="  container-atendimento mt-3">
           <div className="row">
             <div className="header-table">
               <p className="texto1">Informaçoes do Paciente</p>
             </div>
-            <div className="col-sm-2 custom-column">
+            <div className="col-3">
               <div className="img-atendimento">
                 <img
                   className="img"
@@ -34,30 +47,27 @@ const DataList: FC<PacienteProps> = ({ paciente }): JSX.Element => {
                 />
               </div>
             </div>
-            <div className="col-sm-8 custom-column  aa">
+            <div className="   col-9">
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0 row">
-                  
-                  Nome : 
-                
-                    <div className="info-text col ">  {paciente.name} </div>
-                   
+                  <div className="div-item info-text row">
+                    Nome :
+                    <div className="info-text col "> {paciente.name} </div>
                   </div>
                 </div>
               </div>
 
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0 row">
+                  <div className="div-item info-text row">
                     Cpf:
-                      <div className="info-text col "> {paciente.identifier}</div>
+                    <div className="info-text col "> {paciente.identifier}</div>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0 row">
+                  <div className="div-item info-text row">
                     Data de nascimento:
                     <div className="info-text col ">{paciente.birthdate}</div>
                   </div>
@@ -65,11 +75,25 @@ const DataList: FC<PacienteProps> = ({ paciente }): JSX.Element => {
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="div-item text-0 row">Condição</div>
+                  <div className="div-item info-text row">
+                   Telefone
+                    <div className="info-text col ">{paciente.phone_number}</div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            
           </div>
+          <div className="col-6">
+              {" "}
+              <div className="row">
+                <div className="col">
+                  <div className="div-item info-text row mt-3">Condição do último atendimento </div>
+                  <Condition atendimento={atendimento[atendimento?.length - 1]} />
+                </div>
+              </div>
+            </div>
         </div>
       )}
     </div>
@@ -77,3 +101,5 @@ const DataList: FC<PacienteProps> = ({ paciente }): JSX.Element => {
 };
 
 export default DataList;
+//devo exibir somente os resultados de cada atendimento...e pronto ,aqui deve ser exibido isso
+//ver se foi atendido é facil..so um filter

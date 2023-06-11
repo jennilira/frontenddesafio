@@ -26,7 +26,7 @@ code {
   --graylight2: #f0f4f7;
   --gray: #909192;
   --blackb: #1b1b1b;
-  --cordetexto: #757575;
+  --cordetexto: #606060;
 
   --sidebarwidth: 250px;
 
@@ -49,7 +49,7 @@ code {
     background-color: var(--maincolor);
     border-radius: 20px;
     padding: 10px;
-    width: 144px;
+    width: 149px;
     cursor: pointer;
     font-weight: 500;
     text-transform: uppercase;
@@ -71,9 +71,10 @@ code {
   }
 
   
-.text-0 {
+.info-text {
   font-size: 1.1rem;
   margin: 4px;
+  align-items: center;
   
   /* color: var(--gray) */
 }
@@ -81,9 +82,15 @@ code {
   color: rgb(230, 87, 87);
   }
   .info-text{
-    color: var(--blackb);
-   
+    color: var(--cordetexto);
+    font-size: 17px;
+  font-weight: 600;
   }
 
+.form-label{
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--cordetexto);
 
+}
 }
