@@ -1,7 +1,7 @@
 # README - Coronavirus Checker
 
 ## Introdução
-Este repositório contém o código-fonte e os recursos para o Coronavirus Checker, um Sistema de Gestão COVID desenvolvido como parte de um projeto de aprendizado. O objetivo deste sistema é auxiliar na verificação e monitoramento de casos de COVID-19. Neste documento, vou compartilhar informações sobre o sistema, minhas experiências de aprendizado e minha motivação para aprender mais.
+Este repositório contém o código-fonte e os recursos para o Coronavirus Checker, um Sistema de Gestão COVID desenvolvido como parte de um projeto de  seleção de estagiario(a). O objetivo deste sistema é auxiliar na verificação e monitoramento de casos de COVID-19. Neste documento, vou compartilhar informações sobre o sistema, minhas experiências de aprendizado e minha motivação para aprender mais.
 
 ## Aprendizado e Experiência
 Durante o desenvolvimento do Coronavirus Checker, tive a oportunidade de adquirir conhecimentos valiosos e expandir minhas habilidades. Em particular, aprofundei meu entendimento sobre o uso de *props* no React, o que me permitiu transmitir informações entre componentes de forma eficiente e reutilizável. Além disso, aprendi a lidar com prazos desafiadores, melhorar minha habilidade de gerenciamento do tempo e dividir tarefas de forma mais eficaz.
