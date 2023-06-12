@@ -3,7 +3,6 @@ import DataList from "../assets/layouts/Atendimento/ListaAtendimento/InfoAtendim
 import FormAtendimento from "../assets/layouts/Atendimento/Atendimento/Formatendimento";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import CondiçaoAtendimento from "../assets/layouts/Atendimento/Condicao/Condicao";
 
 interface Atendimento {
   patient_id: string;
@@ -60,29 +59,6 @@ function AtendimentoPage() {
     fetchData();
   }, []);
 
-  // ? :
-  // const listaAtendimentos = atendimento.map((atendimento) => {
-  //   // Cálculo da porcentagem dos sintomas para cada atendimento
-  //   const totalSintomas = 14; // Total de sintomas possíveis
-  //   const sintomasMarcados = atendimento.sintomasSelecionados.length; // Número de sintomas marcados
-  //   const porcentagemSintomas = (sintomasMarcados / totalSintomas) * 100; // Calcula a porcentagem
-  // console.log(totalSintomas)
-  // console.log(sintomasMarcados)
-  //   // Definição da condição com base na porcentagem
-  //   let condicao = '';
-
-  //   if (porcentagemSintomas >= 0 && porcentagemSintomas <= 39) {
-  //     condicao = 'Sintomas insuficientes';
-  //   } else if (porcentagemSintomas >= 40 && porcentagemSintomas <= 59) {
-  //     condicao = 'Potencial Infectado';
-  //   } else if (porcentagemSintomas >= 60 && porcentagemSintomas <= 100) {
-  //     condicao = 'Possível Infectado';
-  //   }
-
-  //   return <DataList key={atendimento.id} paciente={atendimento.paciente} condicao={condicao} atendimento={atendimento} />;
-  // });
-
-  // separaa
 
   const [paciente, setPaciente] = useState<Paciente | null>(null);
   const { id } = useParams<{ id: string }>();
@@ -114,8 +90,3 @@ function AtendimentoPage() {
 
 export default AtendimentoPage;
 
-//entao aqui eu faço a logica e passo pro datalist
-//depois ter que passar a condicao na pagina do pagination tooo
-
-//filter no paciente e pegar o ultimo atendimento ,se nao tiver foi porque ele nao foi atendido
-//no caso estamos exibindo a condiçao dele

@@ -48,7 +48,7 @@ const Condition: React.FC<ConditionProps> = ({ atendimento }) => {
   }, [atendimento]);
 
   return (
-    <div>
+    <div className="mb-3">
       {SI ? (
         <div className="insuficientes cont">  Sintomas insuficientes</div>
       ) : PotI ? (

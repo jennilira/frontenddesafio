@@ -50,37 +50,24 @@ const Symptoms: React.FC<SymptomProps> = ({
       {symptoms.map((symptom, i) => (
         <div
           key={symptom.id}
-          // className="sintoma-item"
-          // className={`switchery-checkbox ${checked ? "checked" : ""}`}
+         
         >
-          {/* <input
-           type="checkbox"
-           id="custom-switch"
-          className=""
-           
-            // type="checkbox"
-            value={symptom.id}
-            onChange={handleSelecionarSintoma}
-            onClick={mostrarSintomasSelecionados}
-          /> */}
+        
           <Form.Check
             type="checkbox"
             id="custom-switch"
             className="checkbox"
             label={symptom.name}
-            // type="checkbox"
+          
             value={symptom.id}
             onChange={handleSelecionarSintoma}
           />
-           {errors.symptoms && errors.symptoms.length > 0 && (
-                      <div className="error-message">
-                        <p>
-                          {errors.symptoms[0]   && "o campo simtomas é obrigatorio "}
-
-                        </p>
-                      </div>
-                    )}
-          {/* <label htmlFor="my-checkbox"></label> */}
+          {errors.symptoms && errors.symptoms.length > 0 && (
+            <div className="error-message">
+              <p>{errors.symptoms[0] && "o campo simtomas é obrigatorio "}</p>
+            </div>
+          )}
+      
         </div>
       ))}
     </div>

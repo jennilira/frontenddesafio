@@ -1,36 +1,43 @@
-.insuficientes{
-    background-color: #E7FCE9;
-    color: #18541e;
- 
-    white-space: nowrap;
-    font-weight: 600;
+.insuficientes {
+  background-color: #e7fce9;
+  color: #2f9b3a;
+
+  white-space: nowrap;
+  font-weight: 600;
+  border-color: #2ea43a;
 }
-.Pote-inf{
-background-color: #FFF0E1;
-color: #a65e16;
+.Pote-inf {
+  background-color: #fff0e1;
+  color: #a65e16;
 
-    white-space: nowrap;
-    font-weight: 600;
-}
-
-.poss-inf{
-background-color: #FFCFCF;
-color: #a61d1d;
-
-    white-space: nowrap;
-    font-weight: 600;
+  white-space: nowrap;
+  font-weight: 600;
+  border-color: #b16a24;
 }
 
-.nao-atendido{
-  background-color: #EDF5FD;
-color: #0e4f90;
- 
-    white-space: nowrap;
-    font-weight: 600;
+.poss-inf {
+  background-color: #ffcfcf;
+  color: #a61d1d;
+
+  white-space: nowrap;
+  font-weight: 600;
+  border-color: #c73636;
 }
 
-.cont{
-    text-align: center;
-    padding: 11px;
-    border-radius: 7px;
+.nao-atendido {
+  background-color: #edf5fd;
+  color: #2462a0;
+
+  white-space: nowrap;
+  font-weight: 600;
+  border-color: #246db5;
+}
+
+.cont {
+  text-align: center;
+  padding: 11px;
+  border-radius: 10px;
+  margin: 5px;
+  border-style: solid;
+  border-width: 1px;
 }

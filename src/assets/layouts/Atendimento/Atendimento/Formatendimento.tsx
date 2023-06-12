@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import Switch from "react-switchery";
 import { toast, ToastContainer } from "react-toastify";
-// import { ChangeEvent } from 'react';
+
 import "react-toastify/dist/ReactToastify.css";
 import "./FormAtendimento.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
@@ -126,9 +126,6 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     },
   ]);
 
-  //logica aa
-  // console.log(symptoms.length);
-
   const [clickedbtn, setClickedbtn] = useState(false);
   const [clickedbtn2, setClickedbtn2] = useState(true);
 
@@ -162,13 +159,10 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     respiratory_rate: "",
     pulse: "",
     symptoms: sintomasSelecionados,
-    // symptoms: sintomasSelecionados,
   });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    // Obtém os valores dos sintomas do componente Symptoms
 
     try {
       const response = await axios.post(
@@ -178,7 +172,6 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
 
       console.log("Dados inseridos com sucesso:", response.data);
 
-      // Limpa o formulário após a inserção
       setFormData({
         patient_id: id,
         temperature: "",
@@ -237,12 +230,6 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     const { diastolic_pressure, systolic_pressure, temperature, pulse } =
       formData;
 
-    //  if (name === 'diastolic_pressure') {
-
-    //   definirRespostaVisual(parseFloat(value), parseFloat(formData.systolic_pressure));
-    // } else if (name === 'systolic_pressure') {
-    //   definirRespostaVisual(parseFloat(formData.diastolic_pressure), parseFloat(value));
-    // }
     if (name === "temperature") {
       // definirRespostaVisual(parseFloat(value), parseFloat(formData.diastolic_pressure));
       definirRespostaTemperatura(parseFloat(value));
@@ -331,7 +318,6 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
     }
 
     setdefinirRespostaTemperatura(respostaTemperatura);
-    // setRespostaVisual(respostaTemperatura);
   };
 
   const definirRespostaPulso = (pulse: number) => {
@@ -357,8 +343,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
       respostaFrequenciaRespiratoria = "eupnéico";
     } else if (respiratory_rate > 20) {
       respostaFrequenciaRespiratoria = "taquipnéico";
-    }
-    else  {
+    } else {
       respostaFrequenciaRespiratoria = "nao é condizente";
     }
 
@@ -402,8 +387,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       onChange={handleChange}
                     />
                     <div className={`temperature  ${RespostaTemperatura}`}>
-                      {RespostaTemperatura &&
-                        ` ${RespostaTemperatura}`}
+                      {RespostaTemperatura && ` ${RespostaTemperatura}`}
                     </div>
 
                     {errors.temperature && errors.temperature.length > 0 && (
@@ -477,8 +461,7 @@ const FormAtendimento: React.FC<FormExampleProps> = () => {
                       onChange={handleChange}
                     />
                     <div className={`temperature  ${Respostarespiracao}`}>
-                      {Respostarespiracao &&
-                        ` ${Respostarespiracao}`}
+                      {Respostarespiracao && ` ${Respostarespiracao}`}
                     </div>
                     {errors.respiratory_rate &&
                       errors.respiratory_rate.length > 0 && (

@@ -76,24 +76,36 @@ const DataList: FC<PacienteProps> = ({
               <div className="row">
                 <div className="col">
                   <div className="div-item info-text row">
-                   Telefone
-                    <div className="info-text col ">{paciente.phone_number}</div>
+                    Telefone
+                    <div className="info-text col ">
+                      {paciente.phone_number}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            
           </div>
           <div className="col-6">
-              {" "}
-              <div className="row">
-                <div className="col">
-                  <div className="div-item info-text row mt-3">Condição do último atendimento </div>
-                  <Condition atendimento={atendimento[atendimento?.length - 1]} />
+            {" "}
+            <div className="row">
+              <div className="col minha-pagina">
+                <div className="div-item info-text row mt-3">
+                  Condição do último atendimento{" "}
                 </div>
+                <div className="estilo-info">
+                <Condition atendimento={atendimento[atendimento?.length - 1]} />
+                </div>
+                <div className="div-item info-text row mt-3">
+                 Todos atendimentos{" "}
+                </div>
+
+                {atendimento.map((item: any) => (
+                  <Condition key={item.id} atendimento={item} />
+                ))}
+              
               </div>
             </div>
+          </div>
         </div>
       )}
     </div>
@@ -101,5 +113,3 @@ const DataList: FC<PacienteProps> = ({
 };
 
 export default DataList;
-//devo exibir somente os resultados de cada atendimento...e pronto ,aqui deve ser exibido isso
-//ver se foi atendido é facil..so um filter
