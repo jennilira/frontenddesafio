@@ -1,6 +1,6 @@
 # README - Coronavirus Checker
 
-##observação estou fazendo esse projeto no computador do meu irmão por isso aparece a imagem dele  ,pois nao tirei o github dele do vs code. 
+observação estou fazendo esse projeto no computador do meu irmão por isso aparece a imagem dele  ,pois nao tirei o github dele do vs code. 
 
 ## Introdução
 Este repositório contém o código-fonte e os recursos para o Coronavirus Checker, um Sistema de Gestão COVID desenvolvido como parte de um projeto de  seleção de estagiario(a). O objetivo deste sistema é auxiliar na verificação e monitoramento de casos de COVID-19. Neste documento, vou compartilhar informações sobre o sistema, minhas experiências de aprendizado e minha motivação para aprender mais.
