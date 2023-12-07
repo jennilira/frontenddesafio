@@ -1,28 +1,20 @@
 .table-container {
   box-shadow: rgba(50, 50, 50, 0.2) 0px 2px 8px 0px;
   margin-top: 20px;
-
-  /* height: 600; */
   background-color: rgb(255, 255, 255);
-
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
 }
 
 .header-table {
-  /* margin-top: 20px; */
-
   padding-left: 13px;
-  /* text-align: center;
-align-items: center; */
 }
 .texto1 {
   font-size: 23px;
   font-weight: 600;
   color: rgb(42, 42, 42);
   margin: 0;
-  
   padding-top: 10px;
 }
 
@@ -45,8 +37,6 @@ th {
   object-fit: cover;
 }
 
-/* fazer o delete */
-
 .btn-pagination {
   padding: 15px;
   margin: 5px;
@@ -55,8 +45,4 @@ th {
   background-color: none;
 
 }
-.btn-pagination > svg{
- 
 
-
-}
